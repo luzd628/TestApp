@@ -39,5 +39,16 @@ class SecondScreen : AppCompatActivity() {
             val intent = Intent(this@SecondScreen, ThirdScreen::class.java)
             startActivity(intent)
         }
+        setDataName()
+
+        
     }
+
+    fun setDataName(){
+        val name = intent.getStringExtra("KEY_NAME") ?: "Not Found"
+
+        binding.tvName.text = name
+
+    }
+
 }
