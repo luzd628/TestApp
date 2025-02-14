@@ -41,13 +41,15 @@ class SecondScreen : AppCompatActivity() {
         }
         setDataName()
 
-        
+
     }
 
     fun setDataName(){
         val name = intent.getStringExtra("KEY_NAME") ?: "Not Found"
+        binding.tvUserName.text = name
 
-        binding.tvName.text = name
+        val labelName = intent.getStringExtra("EXTRA_SELECTED_NAME") ?: "Selected User Name"
+        binding.tvSelectedUserName.text = labelName
 
     }
 

@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.btnNext.setOnClickListener {
-            val name = binding.tvName.text.toString()
+            val name = binding.tvUserName.text.toString()
             val intent = Intent(this@MainActivity, SecondScreen::class.java)
             intent.putExtra("KEY_NAME",name)
             startActivity(intent)
