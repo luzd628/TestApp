@@ -2,4 +2,11 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="colorPrimary">#2B637B</color> <!-- Change this -->
+    <color name="colorPrimaryVariant">#57A2C8</color> <!-- Darker shade -->
+    <color name="colorSecondary">#03DAC5</color> <!-- Change this -->
+    <color name="colorSecondaryVariant">#018786</color>
+
+
 </resources>

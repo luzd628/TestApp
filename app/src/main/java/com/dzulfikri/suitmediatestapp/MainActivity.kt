@@ -2,6 +2,8 @@ package com.dzulfikri.suitmediatestapp
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -25,14 +27,6 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        binding.btnNext.setOnClickListener {
-            val name = binding.tvUserName.text.toString()
-            val intent = Intent(this@MainActivity, SecondScreen::class.java)
-            intent.putExtra("KEY_NAME",name)
-            startActivity(intent)
-        }
-
-
         binding.btnCheck.setOnClickListener {
             val input = binding.tvPalindrome.text.toString()
             if (input.isNotEmpty()){
@@ -44,19 +38,45 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        nextButton()
+
+
     }
 
-    fun palindromChecker(text:String):Boolean {
+    private fun palindromChecker(text:String):Boolean {
         val textClean = text.lowercase().replace(Regex("[^a-zA-Z0-9]"), "")
         return textClean == textClean.reversed()
     }
 
-    fun showDialog(message:String){
+    private fun showDialog(message:String){
         AlertDialog.Builder(this)
             .setTitle("Palindrome Checker")
             .setMessage(message)
             .setPositiveButton("OK") { dialog, _ -> dialog.dismiss() }
             .show()
     }
+
+    private fun nextButton(){
+        binding.btnNext.isEnabled = false
+        binding.tvUserName.addTextChangedListener(object : TextWatcher{
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+
+            override fun afterTextChanged(s: Editable?) {
+                binding.btnNext.isEnabled = !s.isNullOrBlank()
+            }
+
+        })
+
+        binding.btnNext.setOnClickListener {
+            val name = binding.tvUserName.text.toString()
+            val intent = Intent(this@MainActivity, SecondScreen::class.java)
+            intent.putExtra("KEY_NAME",name)
+            startActivity(intent)
+        }
+
+    }
+
 
 }

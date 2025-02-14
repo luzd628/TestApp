@@ -22,6 +22,7 @@ class UserPagingAdapter : PagingDataAdapter<DataItem,UserPagingAdapter.MyViewHol
             binding.tvUserEmail.text = data.email
             Glide.with(itemView.context)
                 .load(data.avatar)
+                .circleCrop()
                 .into(binding.ivUser)
 
             itemView.setOnClickListener{

@@ -43,7 +43,7 @@ class ThirdScreen : AppCompatActivity() {
         swipeRefresh()
     }
 
-    fun setToolbar(){
+    private fun setToolbar(){
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
 
@@ -54,7 +54,7 @@ class ThirdScreen : AppCompatActivity() {
         }
     }
 
-    fun getData(){
+    private fun getData(){
         adapter = UserPagingAdapter()
         binding.rvUser.layoutManager = LinearLayoutManager(this)
         binding.rvUser.adapter = adapter.withLoadStateFooter(
@@ -77,11 +77,9 @@ class ThirdScreen : AppCompatActivity() {
     private fun swipeRefresh(){
         binding.swipeRefresh.setOnRefreshListener {
             binding.swipeRefresh.isRefreshing = true
-            adapter.refresh()
-
             Handler(Looper.getMainLooper()).postDelayed({
-                binding.swipeRefresh.isRefreshing = false
-            }, 5000)
+                adapter.refresh() // Refresh after delay
+            }, 250)
         }
     }
 }

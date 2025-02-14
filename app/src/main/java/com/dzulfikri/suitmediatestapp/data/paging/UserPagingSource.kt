@@ -4,7 +4,6 @@ import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.dzulfikri.suitmediatestapp.data.api.ApiService
 import com.dzulfikri.suitmediatestapp.data.response.DataItem
-import java.io.IOException
 
 class UserPagingSource(private val apiService: ApiService) : PagingSource<Int, DataItem>() {
 

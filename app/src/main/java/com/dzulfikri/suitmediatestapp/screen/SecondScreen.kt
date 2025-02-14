@@ -25,8 +25,14 @@ class SecondScreen : AppCompatActivity() {
             insets
         }
 
-        // Back Button
+        setToolbar()
+        setDataName()
+
+    }
+
+    private fun setToolbar(){
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
+        toolbar.elevation = 8f
         setSupportActionBar(toolbar)
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
@@ -39,12 +45,10 @@ class SecondScreen : AppCompatActivity() {
             val intent = Intent(this@SecondScreen, ThirdScreen::class.java)
             startActivity(intent)
         }
-        setDataName()
-
-
     }
 
-    fun setDataName(){
+
+    private fun setDataName(){
         val name = intent.getStringExtra("KEY_NAME") ?: "Not Found"
         binding.tvUserName.text = name
 
